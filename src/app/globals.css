@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --Color-Grey-100: #AAB5C0;
+  --Color-Grey-10: #FAFAFA;
+  --Text-Grey-max: #212121;
+  --Text-Grey-100: #AAB5C0;
+  --primary-pink: #FF2157;
+  --secondary-pink: #A5455C;
+  --tertiary-pink: #B5002C;
+  --light-pink: #FF6A8E;
+  --placeholder-grey: #DCDCDC;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-grand-hotel: var(--font-grand-hotel);
+  --font-inter: var(--font-inter);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter);
+}
+
+.font-grand-hotel {
+  font-family: var(--font-grand-hotel);
+}
+
+.font-inter {
+  font-family: var(--font-inter);
+}

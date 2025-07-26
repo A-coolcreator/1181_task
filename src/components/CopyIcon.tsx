@@ -1,14 +1,20 @@
 interface CopyIconProps {
   className?: string;
+  "aria-label"?: string;
 }
 
-export const CopyIcon: React.FC<CopyIconProps> = ({ className = "w-5 h-5" }) => {
+export const CopyIcon: React.FC<CopyIconProps> = ({ 
+  className = "w-5 h-5",
+  "aria-label": ariaLabel = "Copy to clipboard"
+}) => {
   return (
     <svg
       className={className}
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      aria-label={ariaLabel}
+      role="img"
     >
       <g clipPath="url(#clip0_6_728)">
         <path

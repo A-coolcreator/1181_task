@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, forwardRef } from "react";
 import { HeartIcon } from "./HeartIcon";
 import { LoadingSpinner } from "./LoadingSpinner";
 
@@ -11,9 +11,11 @@ interface ButtonProps {
   size?: "sm" | "md" | "lg";
   className?: string;
   withHearts?: boolean;
+  type?: "button" | "submit" | "reset";
+  "aria-label"?: string;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
   children,
   onClick,
   disabled = false,
@@ -22,7 +24,10 @@ export const Button: React.FC<ButtonProps> = ({
   size = "md",
   className = "",
   withHearts = false,
-}) => {
+  type = "button",
+  "aria-label": ariaLabel,
+  ...props
+}, ref) => {
   const baseClasses = "inline-flex items-center justify-center gap-2 rounded-full transition-colors font-grand-hotel";
   
   const variantClasses = {
@@ -40,8 +45,10 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
+      ref={ref}
       onClick={onClick}
       disabled={isDisabled}
+      type={type}
       className={`
         ${baseClasses}
         ${variantClasses[variant]}
@@ -49,6 +56,8 @@ export const Button: React.FC<ButtonProps> = ({
         ${isDisabled ? "opacity-50 cursor-not-allowed" : ""}
         ${className}
       `}
+      aria-label={ariaLabel}
+      {...props}
     >
       {withHearts && !loading && <HeartIcon className="w-4 h-4" />}
       {loading && <LoadingSpinner className="w-4 h-4" />}
@@ -56,4 +65,6 @@ export const Button: React.FC<ButtonProps> = ({
       {withHearts && !loading && <HeartIcon className="w-4 h-4" />}
     </button>
   );
-};
+});
+
+Button.displayName = "Button";

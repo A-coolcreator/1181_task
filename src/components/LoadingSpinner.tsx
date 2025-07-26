@@ -1,15 +1,24 @@
 interface LoadingSpinnerProps {
   className?: string;
+  "aria-label"?: string;
 }
 
-export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ className = "w-6 h-6" }) => {
+export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ 
+  className = "w-6 h-6",
+  "aria-label": ariaLabel = "Loading"
+}) => {
   return (
-    <div className={`${className} animate-spin`}>
+    <div 
+      className={`${className} animate-spin`}
+      role="status"
+      aria-label={ariaLabel}
+    >
       <svg
         className="w-full h-full"
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
       >
         <circle
           cx="12"

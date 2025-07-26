@@ -1,14 +1,20 @@
 interface GoogleIconProps {
   className?: string;
+  "aria-label"?: string;
 }
 
-export const GoogleIcon: React.FC<GoogleIconProps> = ({ className = "w-4 h-4" }) => {
+export const GoogleIcon: React.FC<GoogleIconProps> = ({ 
+  className = "w-4 h-4",
+  "aria-label": ariaLabel = "Google"
+}) => {
   return (
     <svg
       className={className}
       viewBox="0 0 17 17"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      aria-label={ariaLabel}
+      role="img"
     >
       <path
         d="M15.037 7.19437H14.5V7.16671H8.49998V9.83337H12.2676C11.718 11.3857 10.241 12.5 8.49998 12.5C6.29098 12.5 4.49998 10.709 4.49998 8.50004C4.49998 6.29104 6.29098 4.50004 8.49998 4.50004C9.51965 4.50004 10.4473 4.88471 11.1536 5.51304L13.0393 3.62737C11.8486 2.51771 10.256 1.83337 8.49998 1.83337C4.81831 1.83337 1.83331 4.81837 1.83331 8.50004C1.83331 12.1817 4.81831 15.1667 8.49998 15.1667C12.1816 15.1667 15.1666 12.1817 15.1666 8.50004C15.1666 8.05304 15.1206 7.61671 15.037 7.19437Z"
